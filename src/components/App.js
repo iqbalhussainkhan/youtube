@@ -8,7 +8,7 @@ class App extends React.Component{
 
   state = {
     videos:[],
-    selectedVideo:{}
+    selectedVideo:null
   }
 
   onTermSubmit = async (term) => {
@@ -17,12 +17,11 @@ class App extends React.Component{
         q:term
       }
     })
-    this.setState({videos:response.data.items});
+    this.setState({videos:response.data.items,selectedVideo:response.data.items[0]});
   }
 
   onVideoSelect = (video) => {
-    this.setState({selectVideo: video})
-    console.log(video)
+    this.setState({selectedVideo: video});
   }
 
   render(){
@@ -32,7 +31,7 @@ class App extends React.Component{
           <p>{this.state.videos.length} Videos</p>
           <div className="ui grid">
             <div className="ten wide column">
-                <MainVideo />
+                <MainVideo video={this.state.selectedVideo}/>
             </div>
             <div className="four wide column">
               <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
