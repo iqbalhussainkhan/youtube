@@ -31,7 +31,7 @@ class App extends React.Component{
           <p>{this.state.videos.length} Videos</p>
           <div className="ui grid">
             <div className="ten wide column">
-                <MainVideo video={this.state.selectedVideo}/>
+                <MainVideo video={this.state.selectedVideo} />
             </div>
             <div className="four wide column">
               <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
